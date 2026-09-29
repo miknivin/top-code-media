@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@theme {
+  --color-ink: #0f0e0c;
+  --color-paper: #f3efe7;
+  --color-signal: #f24e17;
+  --color-sand: #e6dac4;
+  --color-bone: #fbf9f5;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--color-paper);
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/*
+ * Line masks from SplitText: give ascenders and descenders room so tight
+ * display leading doesn't shave the glyphs while a line rises into place.
+ */
+.split-line-mask {
+  padding: 0.08em 0 0.16em;
+  margin: -0.08em 0 -0.16em;
+}
+
+/*
+ * The hero entrance is the one animation that runs in CSS rather than GSAP. It
+ * starts on first paint instead of after hydration, which keeps the hero
+ * headline (the LCP element) inside the 2.5s LCP budget. The lines fade and lift
+ * rather than rising out of a clipping mask: clipped text only counts toward LCP
+ * once it is fully uncovered, which would push LCP to the end of the animation.
+ * The fade starts just above zero because text first painted at opacity 0 is
+ * never counted as the LCP element at all.
+ */
+@keyframes hero-rise {
+  from {
+    opacity: 0.05;
+    transform: translate3d(0, 0.3em, 0) rotate(1.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes hero-spin-in {
+  from {
+    opacity: 0;
+    transform: scale(0.35) rotate(-120deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+.hero-rise {
+  display: block;
+  transform-origin: 0% 100%;
+  animation: hero-rise 1.2s var(--ease-expo) both;
+  animation-delay: calc(40ms + var(--d, 0) * 90ms);
+}
+.hero-fade {
+  animation: hero-fade 1.3s var(--ease-expo) both;
+  animation-delay: calc(650ms + var(--d, 0) * 90ms);
+}
+.hero-spin-in {
+  animation: hero-spin-in 1.6s var(--ease-expo) both;
+  animation-delay: 550ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise,
+  .hero-fade,
+  .hero-spin-in {
+    animation: none;
+  }
+}
+
+/* Variable-font proximity effect on the hero headline */
+.prox-char {
+  font-variation-settings: "wght" var(--wght, 300);
+  /* Width is locked by JS; the glyph grows and thins around its centre. */
+  display: inline-block;
+  text-align: center;
+}
+
+/* Weight axis on the "scale" word */
+.flex-word {
+  font-variation-settings: "wght" var(--wght, 800);
+}
+
+/* Paper grain */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+
+/* Hairline grid used behind the hero */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-ink) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-ink) 7%, transparent) 1px, transparent 1px);
+  background-size: calc(100% / 12) 25%;
+  mask-image: radial-gradient(ellipse 80% 70% at 60% 40%, #000 30%, transparent 80%);
+}
