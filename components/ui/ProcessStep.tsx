@@ -8,7 +8,7 @@ export function ProcessStep({ index, title, body }: { index: number; title: stri
         aria-hidden
         className="absolute top-9 left-[calc(-1.5rem-5.5px)] size-2.5 rounded-full bg-signal ring-4 ring-ink group-data-motion/proc:hidden md:hidden"
       />
-      <p className="font-mono text-[0.68rem] tracking-[0.2em] text-signal uppercase">
+      <p className="font-mono text-[0.68rem] tracking-[0.2em] text-signal-soft uppercase">
         Step {String(index + 1).padStart(2, "0")}
       </p>
       <h3 className="mt-3 text-[clamp(2.5rem,5.2vw,5.75rem)] leading-[0.9] font-bold tracking-[-0.042em]">{title}</h3>

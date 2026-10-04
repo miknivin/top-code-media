@@ -46,18 +46,21 @@ export default function Results() {
         gsap.to(fill, { scaleY: 1, duration: 0.55, ease: "expo.out", overwrite: true });
         gsap.to(title, { x: 24, duration: 0.7, ease: "expo.out", overwrite: true });
         gsap.to(arrow, { rotation: -45, scale: 1.15, duration: 0.7, ease: "expo.out", overwrite: true });
+        row.dataset.hot = "";
       };
       const leave = (event: PointerEvent) => {
         gsap.set(fill, { transformOrigin: fromTop(event) ? "50% 0%" : "50% 100%" });
         gsap.to(fill, { scaleY: 0, duration: 0.5, ease: "expo.out", overwrite: true });
         gsap.to(title, { x: 0, duration: 0.7, ease: "expo.out", overwrite: true });
         gsap.to(arrow, { rotation: 0, scale: 1, duration: 0.7, ease: "expo.out", overwrite: true });
+        delete row.dataset.hot;
       };
       row.addEventListener("pointerenter", enter);
       row.addEventListener("pointerleave", leave);
       return () => {
         row.removeEventListener("pointerenter", enter);
         row.removeEventListener("pointerleave", leave);
+        delete row.dataset.hot;
       };
     });
     return () => {
@@ -90,10 +93,10 @@ export default function Results() {
 
       <ol className="mt-20 md:mt-28">
         {results.map((result, i) => (
-          <li key={result.title} data-row className="relative isolate">
+          <li key={result.title} data-row className="group/row relative isolate">
             <span data-rule aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/20" />
             <span data-fill aria-hidden className="absolute inset-0 -z-10 bg-signal" style={{ transform: "scaleY(0)" }} />
-            <div className="grid grid-cols-12 items-center gap-x-4 gap-y-3 py-7 md:gap-x-6 md:px-4 md:py-9">
+            <div className="grid grid-cols-12 items-center gap-x-4 gap-y-3 py-7 transition-colors duration-300 group-data-hot/row:text-paper md:gap-x-6 md:px-4 md:py-9">
               <span data-row-part className="col-span-2 font-mono text-[0.7rem] tracking-[0.2em] md:col-span-1">
                 R—{String(i + 1).padStart(2, "0")}
               </span>
@@ -111,7 +114,7 @@ export default function Results() {
               </h3>
               <p
                 data-row-part
-                className="col-span-10 col-start-3 text-base leading-snug text-ink/70 md:col-span-4 md:col-start-auto"
+                className="col-span-10 col-start-3 text-base leading-snug text-ink/70 transition-colors duration-300 group-data-hot/row:text-paper/90 md:col-span-4 md:col-start-auto"
               >
                 {result.body}
               </p>

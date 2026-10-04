@@ -14,7 +14,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
  */
 const BEAT = 0.45;
 const INTRO = 0.8;
-const SIGNAL = "#f24e17";
+const SIGNAL_TEXT = "#b066ff";
 const PAPER = "#f3efe7";
 
 export default function KineticWords() {
@@ -143,7 +143,7 @@ export default function KineticWords() {
       active = next;
       counter.textContent = String(next + 1).padStart(2, "0");
       stepLabels.forEach((label, i) =>
-        gsap.to(label, { opacity: i === next ? 1 : 0.6, color: i === next ? SIGNAL : PAPER, duration: 0.3, overwrite: true }),
+        gsap.to(label, { opacity: i === next ? 1 : 0.6, color: i === next ? SIGNAL_TEXT : PAPER, duration: 0.3, overwrite: true }),
       );
     });
 
@@ -183,7 +183,7 @@ export default function KineticWords() {
       >
         <div
           aria-hidden
-          className="pointer-events-none absolute top-1/2 left-1/2 size-[120vmin] -translate-1/2 bg-[radial-gradient(circle,rgba(242,78,23,0.16),transparent_62%)]"
+          className="pointer-events-none absolute top-1/2 left-1/2 size-[120vmin] -translate-1/2 bg-[radial-gradient(circle,rgba(150,0,255,0.2),transparent_62%)]"
         />
 
         <div className="relative z-10 flex items-start justify-between gap-6 group-data-motion/kin:absolute group-data-motion/kin:inset-x-5 group-data-motion/kin:top-24 md:group-data-motion/kin:inset-x-10 md:group-data-motion/kin:top-28">
@@ -194,7 +194,7 @@ export default function KineticWords() {
             </h2>
           </div>
           <p className="hidden shrink-0 font-mono text-[0.68rem] tracking-[0.2em] whitespace-nowrap group-data-motion/kin:block">
-            <span data-counter className="text-signal">
+            <span data-counter className="text-signal-soft">
               01
             </span>{" "}
             / {String(growthLoop.length).padStart(2, "0")}

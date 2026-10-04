@@ -59,7 +59,7 @@ export default function Marquee() {
   });
 
   return (
-    <div ref={root} data-nav="signal" className="relative z-20 -my-[4vw] -ml-[5vw] w-[110vw] -rotate-2 bg-signal text-ink">
+    <div ref={root} data-nav="signal" className="relative z-20 -my-[4vw] -ml-[5vw] w-[110vw] -rotate-2 bg-signal text-paper">
       <div className="overflow-hidden py-4 md:py-6">
         <div data-track className="flex w-max will-change-transform">
           {[0, 1].map((copy) => (

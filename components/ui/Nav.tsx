@@ -12,9 +12,9 @@ import { MagneticButton } from "./MagneticButton";
 type Theme = "light" | "dark" | "signal";
 
 const themes: Record<Theme, Record<string, string>> = {
-  light: { "--nav-fg": "#0f0e0c", "--nav-bg": "rgba(243, 239, 231, 0.92)", "--nav-pill-bg": "#0f0e0c", "--nav-pill-fg": "#f3efe7", "--logo-cut": "#f3efe7" },
-  dark: { "--nav-fg": "#f3efe7", "--nav-bg": "rgba(15, 14, 12, 0.9)", "--nav-pill-bg": "#f3efe7", "--nav-pill-fg": "#0f0e0c", "--logo-cut": "#0f0e0c" },
-  signal: { "--nav-fg": "#0f0e0c", "--nav-bg": "rgba(242, 78, 23, 0.94)", "--nav-pill-bg": "#0f0e0c", "--nav-pill-fg": "#f3efe7", "--logo-cut": "#f24e17" },
+  light: { "--nav-fg": "#0f0e0c", "--nav-bg": "rgba(243, 239, 231, 0.92)", "--nav-pill-bg": "#0f0e0c", "--nav-pill-fg": "#f3efe7" },
+  dark: { "--nav-fg": "#f3efe7", "--nav-bg": "rgba(15, 14, 12, 0.9)", "--nav-pill-bg": "#f3efe7", "--nav-pill-fg": "#0f0e0c" },
+  signal: { "--nav-fg": "#f3efe7", "--nav-bg": "rgba(150, 0, 255, 0.94)", "--nav-pill-bg": "#0f0e0c", "--nav-pill-fg": "#f3efe7" },
 };
 
 export function Nav() {
@@ -191,7 +191,7 @@ export function Nav() {
               <MagneticButton
                 href="#contact"
                 className="rounded-full bg-(--nav-pill-bg) px-5 py-3 text-sm font-semibold text-(--nav-pill-fg)"
-                hoverColor="#0f0e0c"
+                hoverColor="#f3efe7"
               >
                 Start a project <Arrow direction="up-right" />
               </MagneticButton>
@@ -231,7 +231,7 @@ export function Nav() {
                 }}
                 className="flex items-baseline gap-4 text-[13vw] font-bold leading-[1.05] tracking-tighter"
               >
-                <span className="font-mono text-xs font-normal tracking-normal text-signal">0{index + 1}</span>
+                <span className="font-mono text-xs font-normal tracking-normal text-signal-soft">0{index + 1}</span>
                 {link.label}
               </a>
             </li>

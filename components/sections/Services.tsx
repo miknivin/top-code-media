@@ -125,7 +125,6 @@ export default function Services() {
             <MagneticButton
               href="#contact"
               className="self-start rounded-full bg-ink px-6 py-3.5 font-semibold text-paper"
-              hoverColor="#0f0e0c"
             >
               Get a recommendation <Arrow />
             </MagneticButton>

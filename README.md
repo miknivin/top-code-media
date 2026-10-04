@@ -1,6 +1,6 @@
 # Top Code Media — scroll-driven site
 
-Single-page brand site for Top Code Media LLC. Next.js (App Router) + GSAP (ScrollTrigger, SplitText) + Lenis + Tailwind v4. Built from `top-code-media-build-spec.md`.
+Scroll-driven brand site for Top Code Media LLC, plus a privacy policy page at `/privacy-policy`. Next.js (App Router) + GSAP (ScrollTrigger, SplitText) + Lenis + Tailwind v4. Built from `top-code-media-build-spec.md`.
 
 ```bash
 npm install
@@ -12,25 +12,31 @@ Deploys to Vercel as-is (the page is fully static). Set `NEXT_PUBLIC_SITE_URL` t
 
 ## Before launch
 
-- **Email**: `content/site.ts` uses `hello@topcodemedia.com` as a placeholder. Replace it with the real inbox.
-- **Copy**: every line of text lives in `content/site.ts`. The headline, captions, service descriptions and process copy were written for this build and should be checked by the client.
-- **No invented numbers**: the Intro counters use only facts from the brief (6 services, 6 steps, 5 loop stages, 1 team). Add real campaign stats there once the client supplies them.
+- **Copy**: every line of site text lives in `content/site.ts`, including the registered company details shown in the footer (`company`). The headline, captions, service descriptions and process copy were written for this build and should be checked by the client.
+- **Privacy policy**: the text in `content/privacy.ts` is transcribed from the client's PDF (last updated 1 October 2026). Update it there, including the date, whenever the policy changes.
+
+## Brand assets
+
+- `logo.png` (project root) is the client's source logo: white strokes and a #9600ff triangle on a transparent 1000×1000 canvas.
+- `assets/brand/logo-mark.png` is that artwork trimmed to its edges, pixels untouched. Because the strokes are white, the site always shows it on an ink tile (`components/ui/Logo.tsx`).
+- `app/favicon.ico`, `app/icon.png` and `app/apple-icon.png` are the mark centred on the same ink tile, so it stays visible in light browser tabs. Regenerate all four if the source logo changes.
+- Brand colour is `--color-signal: #9600ff` in `app/globals.css`. Text on purple surfaces is paper (4.9:1); small purple text on ink uses the lighter `--color-signal-soft` (#b066ff), because #9600ff only reaches 3.4:1 there.
 
 ## The concept
 
-"Top" drives the hero ("Top of feed. Top of search. Top of mind."). The recurring motif is the **signal dot**: it's the full stop on every headline, the dot in the logo, the point riding the process chart, and the period after "scale" that floods the screen before the final CTA.
+"Top" drives the hero ("Top of feed. Top of search. Top of mind."). The recurring motif is the **signal dot**: it's the full stop on every headline, echoing the purple triangle in the logo, the point riding the process chart, and the period after "scale" that floods the screen before the final CTA.
 
 | Section | What happens on scroll |
 | --- | --- |
 | Hero | CSS entrance on first paint; letters near the cursor swing weight on the variable font (desktop) |
 | Marquee | Tilted service ribbon; speed and direction follow scroll velocity |
 | Growth loop | Pinned. Letters fly in and assemble each word (desktop) or roll like a ticker (mobile); "Grow" climbs like a chart |
-| Intro | Masked line reveal, inline chart chip, words brighten as you read, counters |
+| Intro | Masked line reveal, inline chart chip, words brighten as you read |
 | Services | Pinned horizontal rail (desktop); cards deal in and draw their illustrations |
 | Process | Strike-through "No fixed packages"; pinned chart draws step by step (desktop), vertical timeline (mobile) |
 | Results | Rows draw in, titles decode, direction-aware hover fill |
 | Scale | "scale" gains weight, then its dot floods the screen into the CTA |
-| CTA + footer | Magnetic round CTA; wordmark rises in |
+| CTA + footer | Magnetic round CTA; wordmark rises in; company details and Privacy Policy link |
 
 ## How it's put together
 

@@ -11,8 +11,8 @@ const themes: Record<CardTheme, { className: string; vars: Record<string, string
     vars: { "--accent": "var(--color-signal)", "--card-bg": "var(--color-ink)" },
   },
   signal: {
-    className: "bg-signal text-ink",
-    vars: { "--accent": "var(--color-paper)", "--card-bg": "var(--color-signal)" },
+    className: "bg-signal text-paper",
+    vars: { "--accent": "var(--color-ink)", "--card-bg": "var(--color-signal)" },
   },
   sand: {
     className: "bg-sand text-ink",

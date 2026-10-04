@@ -2,13 +2,23 @@ export const site = {
   name: "Top Code Media",
   legalName: "Top Code Media LLC",
   tagline: ["Connect", "Convert", "Grow"],
-  // Placeholder — confirm the real inbox with the client before launch.
-  email: "hello@topcodemedia.com",
+  email: "support@topcodemedia.com",
   timeZone: "Asia/Dubai",
   licence: "Licensed in the United Arab Emirates",
   reach: "Serving businesses worldwide",
   description:
     "Top Code Media is a UAE-licensed digital marketing agency. Performance marketing, paid advertising, SEO, social media, content and websites that turn attention into growth, for businesses worldwide.",
+};
+
+/** Registered company details, worded exactly as supplied by the client. */
+export const company = {
+  name: "TOP CODE MEDIA LLC",
+  licence: "Licensed by Sharjah Media City (Shams), UAE",
+  tradeLicence: "Trade Licence No. 2644784.01",
+  address: "Registered Address: Sharjah Media City, Sharjah, UAE",
+  email: "support@topcodemedia.com",
+  phone: "+971 58 691 2878",
+  phoneHref: "tel:+971586912878",
 };
 
 export const navLinks = [
@@ -55,12 +65,6 @@ export const intro = {
   paragraphs: [
     "Top Code Media is a digital marketing agency licensed in the UAE and working with businesses around the world. We pair data-led performance marketing with creative people actually want to watch, read and share.",
     "Every plan starts with your numbers, not ours. We learn how your business makes money, find where growth is hiding and build campaigns that keep improving long after launch.",
-  ],
-  stats: [
-    { value: 6, label: "Growth services under one roof" },
-    { value: 6, label: "Steps from first call to scale" },
-    { value: 5, label: "Stages in every growth loop" },
-    { value: 1, label: "Team accountable for the result" },
   ],
 };
 
@@ -115,9 +119,9 @@ export const services: {
   {
     id: "content",
     kicker: "Made to stop thumbs",
-    title: "Content and Creative Design",
+    title: "Creative Design",
     body: "Scroll-stopping visuals, video and copy designed for the platform they live on and the action you want people to take.",
-    tags: ["Ad creative", "Video", "Brand design"],
+    tags: ["Ad creative", "Video Editing & Motion Graphics", "Brand design"],
     art: "content",
     theme: "ink",
   },
@@ -155,7 +159,7 @@ export const results: { title: string; body: string; icon: ResultIconKind }[] = 
   { title: "Qualified Leads", body: "Enquiries from people who fit your business, ready for your sales team.", icon: "leads" },
   { title: "Conversions", body: "More visitors turning into customers, at a lower cost per acquisition.", icon: "convert" },
   { title: "Repeat Customers", body: "Retention and remarketing that turn first-time buyers into regulars.", icon: "repeat" },
-  { title: "Business Growth", body: "Revenue that compounds, backed by reporting you can actually read.", icon: "growth" },
+  { title: "Business Growth", body: "Strategies focused on sustainable business growth, backed by reporting you can actually read.", icon: "growth" },
 ];
 
 export const scale = {

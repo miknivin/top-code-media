@@ -73,7 +73,7 @@ export function GrowthChart({ className }: { className?: string }) {
       {chartPoints.map(([x, y], i) => (
         <g key={x}>
           <circle data-point cx={x} cy={y} r="6.5" fill="var(--color-signal)" stroke="var(--color-ink)" strokeWidth="3" />
-          <text x={x} y={CHART.baseline + 26} textAnchor="middle" className="font-mono text-[13px]" fill="var(--color-signal)">
+          <text x={x} y={CHART.baseline + 26} textAnchor="middle" className="font-mono text-[13px]" fill="var(--color-signal-soft)">
             0{i + 1}
           </text>
         </g>

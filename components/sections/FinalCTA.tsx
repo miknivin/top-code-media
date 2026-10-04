@@ -24,9 +24,9 @@ export default function FinalCTA() {
       ref={root}
       id="contact"
       data-nav="signal"
-      className="relative bg-signal px-5 pt-24 pb-28 text-ink md:px-10 md:pt-32 md:pb-36"
+      className="relative bg-signal px-5 pt-24 pb-28 text-paper md:px-10 md:pt-32 md:pb-36"
     >
-      <SectionLabel index="07" dotClassName="bg-ink">
+      <SectionLabel index="07" dotClassName="bg-paper">
         Let’s talk
       </SectionLabel>
 
@@ -73,7 +73,7 @@ export default function FinalCTA() {
 
       <p
         data-cta-part
-        className="mt-20 flex flex-wrap justify-between gap-3 border-t border-ink/25 pt-5 font-mono text-[0.68rem] tracking-[0.2em] uppercase md:mt-28"
+        className="mt-20 flex flex-wrap justify-between gap-3 border-t border-paper/30 pt-5 font-mono text-[0.68rem] tracking-[0.2em] uppercase md:mt-28"
       >
         <span>{site.legalName}</span>
         <span>{site.licence}</span>

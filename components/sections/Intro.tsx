@@ -46,28 +46,6 @@ export default function Intro() {
 
     readingScrub(scope.querySelector<HTMLElement>("[data-statement]")!);
     fadeUp("[data-paragraph]", { stagger: 0.12 });
-
-    // Counters and their rules
-    gsap.utils.toArray<HTMLElement>("[data-stat]").forEach((stat, i) => {
-      const number = stat.querySelector<HTMLElement>("[data-count]")!;
-      const target = Number(number.dataset.count);
-      const counter = { value: 0 };
-      const tl = gsap.timeline({ scrollTrigger: { trigger: stat, start: "top 90%", once: true }, delay: i * 0.1 });
-      tl.from(stat.querySelector("[data-rule]"), { scaleX: 0, transformOrigin: "0% 50%", duration: 1.2, ease: "expo.inOut" })
-        .to(
-          counter,
-          {
-            value: target,
-            duration: 1.4,
-            ease: "power3.out",
-            onUpdate: () => {
-              number.textContent = String(Math.round(counter.value)).padStart(2, "0");
-            },
-          },
-          0.2,
-        )
-        .from(stat.querySelector("[data-stat-label]"), { y: 16, autoAlpha: 0, duration: 0.9 }, 0.35);
-    });
   });
 
   return (
@@ -107,23 +85,6 @@ export default function Intro() {
           ))}
         </div>
       </div>
-
-      <dl className="mt-24 grid grid-cols-2 gap-x-5 gap-y-12 md:mt-36 md:grid-cols-4 md:gap-x-10">
-        {intro.stats.map((stat) => (
-          <div key={stat.label} data-stat className="relative flex flex-col pt-6">
-            <span data-rule aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/25" />
-            <dt data-stat-label className="order-last mt-3 max-w-[14rem] text-sm text-ink/65">
-              {stat.label}
-            </dt>
-            <dd
-              data-count={stat.value}
-              className="order-first text-[clamp(3.5rem,7vw,7rem)] leading-none font-bold tracking-[-0.06em] tabular-nums"
-            >
-              {String(stat.value).padStart(2, "0")}
-            </dd>
-          </div>
-        ))}
-      </dl>
     </section>
   );
 }

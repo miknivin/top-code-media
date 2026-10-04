@@ -117,7 +117,6 @@ export default function Hero() {
           <MagneticButton
             href="#contact"
             className="rounded-full bg-ink px-7 py-4 text-base font-semibold text-paper"
-            hoverColor="#0f0e0c"
           >
             {hero.cta} <Arrow />
           </MagneticButton>

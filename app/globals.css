@@ -10,7 +10,9 @@
 @theme {
   --color-ink: #0f0e0c;
   --color-paper: #f3efe7;
-  --color-signal: #f24e17;
+  --color-signal: #9600ff;
+  /* Lighter tint for small purple text on ink: #9600ff only reaches 3.4:1 there. */
+  --color-signal-soft: #b066ff;
   --color-sand: #e6dac4;
   --color-bone: #fbf9f5;
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -32,7 +34,7 @@
 
   ::selection {
     background: var(--color-signal);
-    color: var(--color-ink);
+    color: var(--color-paper);
   }
 
   :focus-visible {

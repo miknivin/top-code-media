@@ -86,7 +86,16 @@ export function useScrollTo() {
       const target = href === "#top" ? 0 : document.querySelector<HTMLElement>(href);
       if (target === null) return;
       if (lenis) {
-        lenis.scrollTo(target, { duration: 1.6, easing: (t) => 1 - Math.pow(1 - t, 4) });
+        // Resolve the destination from the real scroll position: Lenis adds the element's
+        // offset to its own last-known position, which lags a native scroll that happened
+        // just before the click (a focused link scrolled into view, for example).
+        const top =
+          target === 0
+            ? 0
+            : target.getBoundingClientRect().top +
+              window.scrollY -
+              (parseFloat(getComputedStyle(target).scrollMarginTop) || 0);
+        lenis.scrollTo(top, { duration: 1.6, easing: (t) => 1 - Math.pow(1 - t, 4) });
       } else if (target === 0) {
         window.scrollTo({ top: 0 });
       } else {

@@ -9,7 +9,8 @@ import { chartPoints, GrowthChart } from "@/components/ui/GrowthChart";
 import { ProcessStep } from "@/components/ui/ProcessStep";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const SIGNAL = "#f24e17";
+const SIGNAL = "#9600ff";
+const SIGNAL_TEXT = "#b066ff";
 const INK = "#0f0e0c";
 const PAPER = "#f3efe7";
 const UPCOMING = "rgba(243, 239, 231, 0.35)";
@@ -114,7 +115,7 @@ export default function ProcessStepper() {
         }),
       );
       segmentLabels.forEach((label, i) =>
-        gsap.to(label, { opacity: i === next ? 1 : 0.6, color: i === next ? SIGNAL : PAPER, duration: 0.3, overwrite: true }),
+        gsap.to(label, { opacity: i === next ? 1 : 0.6, color: i === next ? SIGNAL_TEXT : PAPER, duration: 0.3, overwrite: true }),
       );
       current = next;
     };
